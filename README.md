@@ -31,7 +31,8 @@ i narzędzi analitycznych (Python/Jupyter).
 
 | # | Podgląd | Opis |
 |---|---------|------|
-| 1 | ![](docs/img/01_corridor_mount.jpg) | **Kotwice w korytarzu** – trzy pierwsze nadajniki, belka AL 20×20 mm, płyta 18 mm. |
+| 1 | ![image](https://github.com/user-attachments/assets/fb79224c-5b5f-412c-af84-f2fe2497fd9e)
+
 | 2 | ![](docs/img/02_switch_laptop.jpg) | **Stolik serwisowy** – laptop z `ssh`, switch PoE z identyfikacją portów (żółte tagi). |
 | 3 | ![](docs/img/03_switch_close.jpg) | Zbliżenie na **Planet GSD-804P**, LED status PoE OK. |
 | 4 | ![](docs/img/04_ceiling_selfie.jpg) | Selfie podczas przeciągania skrętki nad sufitem podwieszanym. |
