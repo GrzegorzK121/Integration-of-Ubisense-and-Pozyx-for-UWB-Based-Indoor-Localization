@@ -19,8 +19,8 @@ Każdy z kontrolerów Ubisense posiada:
 - dedykowane porty dla synchronizacji między anchorami (czas i pozycja),
 - osobne porty Ethernet do zarządzania i zasilania (PoE).
 
-**Zdjęcie 1 – Kontroler Ubisense 1**  
-![ubisense_1](./ubisense_1.jpg)
+<img src="ubisense_1.jpg" width="50%">
+
 
 **Zdjęcie 2 – Kontroler Ubisense 2**  
 ![ubisense_2](./ubisense_2.jpg)
