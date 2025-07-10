@@ -10,22 +10,24 @@ i narzędzi analitycznych (Python/Jupyter).
 
 ## Topologia sieci RTLS (Ubisense + Pozyx)
 
-Poniższy schemat przedstawia fizyczną topologię sieci, w której równolegle działają dwa systemy lokalizacji czasu rzeczywistego: Ubisense oraz Pozyx. Oba systemy pracują we wspólnej infrastrukturze Ethernet zasilanej przez przełączniki PoE.
+W tym wariancie backend RTLS działa wewnątrz pojedynczej maszyny wirtualnej. Do niej przesyłane są wiadomości UDP z zewnętrznych systemów lokalizacji (Pozyx oraz Ubisense). Każdy z protokołów ma osobny odbiornik, który parsuje wiadomości i przekazuje je do wspólnego przetwarzania. Wynik udostępniany jest poprzez interfejs API (REST lub WebSocket), a wizualizacja odbywa się po stronie klienta.
 
 ![Topologia RTLS](./Topologia2.png)
 
-### Opis struktury
 
-Router z dostępem do Internetu połączony jest z głównym switchem PoE. Z tego switcha wychodzą trzy połączenia:
 
-- do kontrolera RTLS Pozyx
-- do dwóch anchorów Ubisense
-- do drugiego switcha PoE (kaskadowo)
+> (W tym miejscu wstaw diagram z diagrams.net)
 
-Z drugiego switcha PoE wychodzą połączenia:
+### Kluczowe elementy:
+- `Pozyx Gateway` i `Ubisense App` – wysyłają dane lokalizacyjne jako wiadomości UDP
+- `UDP Receiver (Pozyx)` – parser wiadomości UDP specyficznych dla Pozyx
+- `UDP Receiver (Ubisense)` – parser wiadomości w formacie OTW-40
+- `Dane → format wspólny` – warstwa normalizacji danych `{id, x, y, z, t}`
+- `REST / WebSocket API` – udostępnia dane w czasie rzeczywistym
+- `Aplikacja kliencka (mapa)` – frontend działa poza wirtualką i wizualizuje lokalizację
 
-- do kontrolera RTLS Ubisense
-- do dwóch kolejnych anchorów Ubisense
+System może być uruchomiony na dowolnym hypervisorze (np. VirtualBox, Proxmox, KVM), a komunikacja UDP odbywa się w obrębie lokalnej podsieci.
+
 
 Kontroler Pozyx jest bezpośrednio połączony z czterema anchorami Pozyx, które są zasilane i komunikują się przez Ethernet.
 
