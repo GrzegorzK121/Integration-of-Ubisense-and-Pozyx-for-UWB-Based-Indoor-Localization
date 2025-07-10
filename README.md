@@ -20,10 +20,10 @@ Każdy z kontrolerów Ubisense posiada:
 - osobne porty Ethernet do zarządzania i zasilania (PoE).
 - 
 
-<img src="ubisense_1.jpg" width="50%">
+<img src="ubisense_1.jpg" width="80%">
 
  
-<img src="ubisense_2.jpg" width="50%">
+<img src="ubisense_2.jpg" width="80%">
 
 #### Pozyx: anchor z magistralą Ethernet (zasilanie + komunikacja)
 
@@ -33,7 +33,7 @@ System Pozyx korzysta z uproszczonej architektury:
 - dane UDP są przesyłane bezpośrednio z gatewaya Pozyx.
 
 
-<img src="pozyx_anchors.jpg" width="70%">
+<img src="pozyx_anchors.jpg" width="80%">
 
 
 ## Topologia sieci RTLS (Ubisense + Pozyx)
