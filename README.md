@@ -20,7 +20,7 @@ Każdy z kontrolerów Ubisense posiada:
 - osobne porty Ethernet do zarządzania i zasilania (PoE).
 - 
 **Zdjęcie 1 – Kontrolery Ubisense od przodu**
-!<img src="ubisense_1.jpg" width="50%">
+\n<img src="ubisense_1.jpg" width="50%">
 
 **Zdjęcie 2 – Kontrolery Ubisense od tyłu** 
 <img src="ubisense_2.jpg" width="50%">
