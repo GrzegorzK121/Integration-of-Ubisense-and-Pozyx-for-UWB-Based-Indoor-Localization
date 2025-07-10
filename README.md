@@ -1,12 +1,40 @@
-# UWB-RTLS-Corridor-Demo
+## Założenia systemu RTLS
 
-Implementacja korytarzowego pola testowego RTLS opartego na UWB (system Ubisense).
-Repo służy do wersjonowania konfiguracji sieci, skryptów kalibracyjnych
-i narzędzi analitycznych (Python/Jupyter).
+System został zaprojektowany jako modularna architektura czasu rzeczywistego do odbioru i integracji danych z różnych technologii lokalizacji. Główne założenia:
 
-<div align="center">
-  <img src="docs/img/corridor_overview.jpg" width="650">
-</div>
+- Obsługa wielu źródeł danych lokalizacyjnych przez UDP (Pozyx, Ubisense)
+- Przetwarzanie danych na serwerze (VM lub kontenery)
+- Ujednolicenie formatu wiadomości do modelu `{id, x, y, z, t}`
+- Dostęp do danych przez REST API oraz WebSocket
+- Zewnętrzny frontend (klient HTTP), niezależny od backendu
+- Możliwość integracji z systemami MES / ERP / BI
+
+### Sprzęt – zamontowane urządzenia
+
+Poniżej zdjęcia z wdrożenia fizycznego systemu:
+
+#### Ubisense: kontrolery z trzema portami Ethernet do synchronizacji
+
+Każdy z kontrolerów Ubisense posiada:
+- dedykowane porty dla synchronizacji między anchorami (czas i pozycja),
+- osobne porty Ethernet do zarządzania i zasilania (PoE).
+
+**Zdjęcie 1 – Kontroler Ubisense 1**  
+![ubisense_1](./images/ubisense_1.jpg)
+
+**Zdjęcie 2 – Kontroler Ubisense 2**  
+![ubisense_2](./images/ubisense_2.jpg)
+
+#### Pozyx: anchor z magistralą Ethernet (zasilanie + komunikacja)
+
+System Pozyx korzysta z uproszczonej architektury:
+- każdy anchor posiada port Ethernet z obsługą PoE,
+- synchronizacja czasowa odbywa się przez sieć (PTP),
+- dane UDP są przesyłane bezpośrednio z gatewaya Pozyx.
+
+**Zdjęcie 3 – Anchory Pozyx (x2)**  
+![pozyx_anchors](./images/pozyx_anchors.jpg)
+
 
 ## Topologia sieci RTLS (Ubisense + Pozyx)
 
