@@ -53,6 +53,8 @@ Poniżej przedstawiono dwa niezależne sposoby realizacji aplikacji – w oparci
 
 Każdy komponent aplikacji działa na oddzielnej maszynie wirtualnej (np. VirtualBox, Proxmox, KVM). Maszyny są połączone wewnętrzną siecią bridge, a połączenia UDP realizowane są między adresami prywatnymi.
 
+(./topologiaWirtualki.png)
+
 Struktura:
 - VM1: odbiornik UDP z Sewio (port 5300)
 - VM2: odbiornik UDP z Ubisense (port 47474)
@@ -61,18 +63,19 @@ Struktura:
 
 Każdy odbiornik zapisuje dane w postaci surowej i przekazuje je do normalizatora przez asyncio Queue (socket lokalny lub TCP). Dane są ujednolicane do formatu {id, x, y, z, t} i udostępniane przez API.
 
-### Rozwiązanie 2: UDP w kontenerach Docker/Podman z Pythonem
+### Rozwiązanie 2: Przetwarzanie UDP w kontenerach z frontendem poza serwerem
 
-Całość aplikacji działa w kontenerach, uruchamianych z wykorzystaniem Docker Compose lub `podman pod`. Poszczególne kontenery komunikują się w sieci bridge lub `host`.
+Poniższy diagram przedstawia sposób odbioru danych lokalizacyjnych z sieci UDP w kontenerach Docker/Podman oraz ich ekspozycję do zewnętrznych aplikacji. Frontend działa poza hostem kontenerowym i łączy się z API udostępnianym przez backend.
 
-Struktura:
-- `sewio_ingest`: kontener nasłuchujący UDP 5300 i przekazujący dane do kolejki
-- `ubisense_ingest`: kontener nasłuchujący UDP 47474 (OTW-40)
-- `rtls_normalizer`: kontener normalizujący dane z obu źródeł (model danych, buforowanie, synchronizacja czasowa)
-- `rtls_api_gateway`: kontener udostępniający dane przez REST oraz WebSocket
-- `rtls_frontend`: opcjonalny kontener z panelem webowym (np. Flask + JS, HTMX)
+Schemat zakłada:
+- dwa źródła danych UDP (wcześniej opisane),
+- kontenery: ingest, normalizer, API,
+- frontend działający niezależnie (np. przeglądarka, MES, dashboard).
 
-Zaletą rozwiązania kontenerowego jest łatwa replikacja środowiska, szybki restart i możliwość wdrożenia w systemie CI/CD. Każdy komponent posiada własny Dockerfile z zależnościami opartymi o Python 3.11+.
+(./topologiaKontener.png)
+
+Architektura jest w pełni modularna, gotowa do wdrożenia w Docker Compose lub Podman Pod. Komunikacja wewnętrzna kontenerów może opierać się o kolejki asynchroniczne (np. asyncio), sockety lub lokalny TCP. API udostępnia dane lokalizacyjne w formacie ujednoliconym `{id, x, y, z, t}`.
+
 
 
 
