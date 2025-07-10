@@ -57,13 +57,15 @@ Każdy komponent aplikacji działa na oddzielnej maszynie wirtualnej (np. Virtua
 
 ![Topologia RTLS](./topologiaWirtualki.png)
 
-Struktura:
-- VM1: odbiornik UDP z Sewio (port 5300)
-- VM2: odbiornik UDP z Ubisense (port 47474)
-- VM3: normalizer – aplikacja Pythona (FastAPI + asyncio) łącząca dane z obu źródeł
-- VM4: API Gateway – udostępniający dane przez REST oraz WebSocket
+### Kluczowe elementy:
+- `Pozyx Gateway` i `Ubisense App` – wysyłają dane lokalizacyjne jako wiadomości UDP
+- `UDP Receiver (Pozyx)` – parser wiadomości UDP specyficznych dla Pozyx
+- `UDP Receiver (Ubisense)` – parser wiadomości w formacie OTW-40
+- `Dane → format wspólny` – warstwa normalizacji danych `{id, x, y, z, t}`
+- `REST / WebSocket API` – udostępnia dane w czasie rzeczywistym
+- `Aplikacja kliencka (mapa)` – frontend działa poza wirtualką i wizualizuje lokalizację
 
-Każdy odbiornik zapisuje dane w postaci surowej i przekazuje je do normalizatora przez asyncio Queue (socket lokalny lub TCP). Dane są ujednolicane do formatu {id, x, y, z, t} i udostępniane przez API.
+System może być uruchomiony na dowolnym hypervisorze (np. VirtualBox, Proxmox, KVM), a komunikacja UDP odbywa się w obrębie lokalnej podsieci.
 
 ### Rozwiązanie 2: Przetwarzanie UDP w kontenerach z frontendem poza serwerem
 
