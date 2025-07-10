@@ -9,6 +9,51 @@ System został zaprojektowany jako modularna architektura czasu rzeczywistego do
 - Zewnętrzny frontend (klient HTTP), niezależny od backendu
 - Możliwość integracji z systemami MES / ERP / BI
 
+## Technologia UWB i systemy RTLS
+
+### Czym jest UWB?
+
+**Ultra-Wideband (UWB)** to technologia bezprzewodowa umożliwiająca bardzo precyzyjne pomiary odległości oraz pozycjonowanie w czasie rzeczywistym (RTLS). Działa w paśmie od 3,1 do 10,6 GHz i pozwala na dokładność rzędu kilku centymetrów. Dzięki bardzo krótkim impulsom UWB nie koliduje z typowymi sieciami Wi-Fi i Bluetooth i jest odporna na wielodrogowość (multipath).
+
+---
+
+### Podejścia lokalizacyjne: TDoA i AoA
+
+**TDoA (Time Difference of Arrival)**  
+Pozycja obliczana jest na podstawie różnicy czasów przylotu sygnałów do anchorów. Wymaga precyzyjnej synchronizacji czasu między urządzeniami, co realizowane jest zwykle przez sieć Ethernet i protokoły takie jak PTP. Metoda ta dobrze sprawdza się w otwartych przestrzeniach z dużą liczbą anchorów.
+
+**AoA (Angle of Arrival)**  
+Pozycja określana jest przez pomiar kąta, pod jakim sygnał dotarł do anteny odbiorczej. Systemy AoA nie wymagają synchronizacji czasowej między urządzeniami, ale opierają się na antenach kierunkowych i zaawansowanych algorytmach przetwarzania sygnału. Technologia ta sprawdza się w elastycznych, przemysłowych instalacjach.
+
+---
+
+## Systemy Ubisense i Pozyx
+
+### Ubisense
+
+Ubisense to dojrzały, przemysłowy system lokalizacji oparty na UWB i TDoA. Umożliwia precyzyjne śledzenie obiektów w czasie rzeczywistym w środowiskach przemysłowych i magazynowych. Komunikacja z systemem odbywa się poprzez multicast UDP z użyciem protokołu OTW-40.
+
+**Logo Ubisense**  
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Ubisense_logo.png" width="160">
+
+**Urządzenie Ubisense (Location Cell Manager)**  
+<img src="https://www.researchgate.net/profile/Brian-Corrigan/publication/280308403/figure/fig1/AS:284598320672769@1444879648669/Ubisense-sensor-that-detects-UWB-signals-and-sends-data-over-the-network.jpg" width="50%">  
+> Przemysłowy kontroler z trzema portami Ethernet – do synchronizacji, transmisji danych i zasilania.
+
+---
+
+### Pozyx
+
+Pozyx to nowoczesny, modułowy system UWB RTLS oparty na metodzie AoA. Ułatwia szybkie wdrożenia w przemyśle, wspiera protokół UDP i umożliwia bezpośrednie połączenie z gatewayem, bez potrzeby centralnego serwera. Anchory Pozyx mogą być zasilane przez PoE i sterowane zdalnie z poziomu interfejsu webowego.
+
+**Logo Pozyx**  
+<img src="https://www.pozyx.io/hubfs/Pozyx_logo_black.svg" width="160">
+
+**Urządzenia Pozyx (anchory)**  
+<img src="https://www.pozyx.io/hubfs/industrial%20anchor%20v3.jpg" width="50%">  
+> Anchory z wbudowaną anteną i PoE. Współpracują z gatewayem, który koordynuje ich pracę.
+
+
 ### Sprzęt – zamontowane urządzenia
 
 Poniżej zdjęcia z wdrożenia fizycznego systemu:
