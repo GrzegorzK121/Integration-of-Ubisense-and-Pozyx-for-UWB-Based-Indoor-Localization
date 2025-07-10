@@ -18,12 +18,12 @@ Poniżej zdjęcia z wdrożenia fizycznego systemu:
 Każdy z kontrolerów Ubisense posiada:
 - dedykowane porty dla synchronizacji między anchorami (czas i pozycja),
 - osobne porty Ethernet do zarządzania i zasilania (PoE).
-
+- 
+**Zdjęcie 1 – Kontrolery Ubisense od przodu**
 <img src="ubisense_1.jpg" width="50%">
 
-
-**Zdjęcie 2 – Kontroler Ubisense 2**  
-![ubisense_2](./ubisense_2.jpg)
+**Zdjęcie 2 – Kontrolery Ubisense od tyłu** 
+<img src="ubisense_2.jpg" width="50%">
 
 #### Pozyx: anchor z magistralą Ethernet (zasilanie + komunikacja)
 
@@ -32,8 +32,8 @@ System Pozyx korzysta z uproszczonej architektury:
 - synchronizacja czasowa odbywa się przez sieć (PTP),
 - dane UDP są przesyłane bezpośrednio z gatewaya Pozyx.
 
-**Zdjęcie 3 – Anchory Pozyx (x2)**  
-![pozyx_anchors](./pozyx_anchors.jpg)
+**Zdjęcie 2 – Kontrolery pozyx**  
+<img src="pozyx_anchors.jpg" width="70%">
 
 
 ## Topologia sieci RTLS (Ubisense + Pozyx)
