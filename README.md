@@ -53,7 +53,7 @@ Poniżej przedstawiono dwa niezależne sposoby realizacji aplikacji – w oparci
 
 Każdy komponent aplikacji działa na oddzielnej maszynie wirtualnej (np. VirtualBox, Proxmox, KVM). Maszyny są połączone wewnętrzną siecią bridge, a połączenia UDP realizowane są między adresami prywatnymi.
 
-(./topologiaWirtualki.png)
+![Topologia RTLS](./topologiaWirtualki.png)
 
 Struktura:
 - VM1: odbiornik UDP z Sewio (port 5300)
@@ -72,7 +72,7 @@ Schemat zakłada:
 - kontenery: ingest, normalizer, API,
 - frontend działający niezależnie (np. przeglądarka, MES, dashboard).
 
-(./topologiaKontener.png)
+![Topologia RTLS](./topologiaKontener.png)
 
 Architektura jest w pełni modularna, gotowa do wdrożenia w Docker Compose lub Podman Pod. Komunikacja wewnętrzna kontenerów może opierać się o kolejki asynchroniczne (np. asyncio), sockety lub lokalny TCP. API udostępnia dane lokalizacyjne w formacie ujednoliconym `{id, x, y, z, t}`.
 
