@@ -34,7 +34,7 @@ Ubisense to dojrzały, przemysłowy system lokalizacji oparty na UWB i TDoA. Umo
 <img src="" width="160">
 
 **Urządzenie Ubisense (Location Cell Manager)**  
-<img src="https://www.researchgate.net/profile/Brian-Corrigan/publication/280308403/figure/fig1/AS:284598320672769@1444879648669/Ubisense-sensor-that-detects-UWB-signals-and-sends-data-over-the-network.jpg" width="50%">  
+<img src="https://www.researchgate.net/profile/BrianCorrigan/publication/280308403/figure/fig1/AS:284598320672769@1444879648669/Ubisense-sensor-that-detects-UWB-signals-and-sends-data-over-the-network.jpg" width="50%">  
 > Przemysłowy kontroler z trzema portami Ethernet – do synchronizacji, transmisji danych i zasilania.
 
 ---
