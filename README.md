@@ -35,7 +35,7 @@ Ubisense to dojrzały, przemysłowy system lokalizacji oparty na UWB i TDoA. Umo
 
 **Urządzenie Ubisense (Location Cell Manager)**  
 <img src="https://www.researchgate.net/profile/BrianCorrigan/publication/280308403/figure/fig1/AS:284598320672769@1444879648669/Ubisense-sensor-that-detects-UWB-signals-and-sends-data-over-the-network.jpg" width="50%">  
-> Przemysłowy kontroler z trzema portami Ethernet – do synchronizacji, transmisji danych i zasilania.
+
 
 ---
 
@@ -48,7 +48,7 @@ Pozyx to nowoczesny, modułowy system UWB RTLS oparty na metodzie AoA. Ułatwia 
 
 **Urządzenia Pozyx (anchory)**  
 <img src="https://www.pozyx.io/hubfs/industrial%20anchor%20v3.jpg" width="50%">  
-> Anchory z wbudowaną anteną i PoE. Współpracują z gatewayem, który koordynuje ich pracę.
+
 
 
 ### Sprzęt – zamontowane urządzenia
@@ -85,8 +85,6 @@ W tym wariancie backend RTLS działa wewnątrz pojedynczej maszyny wirtualnej. D
 ![Topologia RTLS](./Topologia2.png)
 
 
-
-> (W tym miejscu wstaw diagram z diagrams.net)
 
 ### Kluczowe elementy:
 - `Pozyx Gateway` i `Ubisense App` – wysyłają dane lokalizacyjne jako wiadomości UDP
