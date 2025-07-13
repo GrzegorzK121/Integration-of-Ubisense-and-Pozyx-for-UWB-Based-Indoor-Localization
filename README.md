@@ -109,9 +109,7 @@ Switch PoE #2 → RTLS Ubisense Controller
 Switch PoE #2 → Anchor Ubisense (x2)  
 RTLS Pozyx Controller → Anchor Pozyx (x4)
 
-### Uwagi
 
-Topologia umożliwia niezależną konfigurację każdego z systemów, przy jednoczesnym współdzieleniu infrastruktury zasilająco-transmisyjnej. Układ został dobrany tak, aby możliwa była szybka rekonfiguracja lub odseparowanie systemów w warstwie logicznej (np. VLAN, overlay, bridge).
 
 ## Możliwe rozwiązania aplikacji
 
