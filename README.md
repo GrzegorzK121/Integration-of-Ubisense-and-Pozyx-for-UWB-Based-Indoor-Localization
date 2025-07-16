@@ -30,7 +30,7 @@ Pozycja określana jest przez pomiar kąta, pod jakim sygnał dotarł do anteny 
 
 Ubisense to dojrzały, przemysłowy system lokalizacji oparty na UWB i TDoA. Umożliwia precyzyjne śledzenie obiektów w czasie rzeczywistym w środowiskach przemysłowych i magazynowych. Komunikacja z systemem odbywa się poprzez multicast UDP z użyciem protokołu OTW-40.
 
-<img src="Ubisense_logo.jpg" width="30%"> 
+<img src="Ubisense_logo.png" width="30%"> 
 
 <img src="ubisense_sprzet.jpg" width="80%">  
 
