@@ -32,7 +32,7 @@ Ubisense to dojrzały, przemysłowy system lokalizacji oparty na UWB i TDoA. Umo
 
 <img src="Ubisense_logo.png" width="30%"> 
 
-<img src="ubisense_sprzet.jpg" width="80%">  
+<img src="ubisense_sprzet.png" width="80%">  
 
 ### Pozyx
 
