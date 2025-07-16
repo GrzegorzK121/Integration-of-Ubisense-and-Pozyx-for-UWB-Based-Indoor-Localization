@@ -30,17 +30,17 @@ Pozycja określana jest przez pomiar kąta, pod jakim sygnał dotarł do anteny 
 
 Ubisense to dojrzały, przemysłowy system lokalizacji oparty na UWB i TDoA. Umożliwia precyzyjne śledzenie obiektów w czasie rzeczywistym w środowiskach przemysłowych i magazynowych. Komunikacja z systemem odbywa się poprzez multicast UDP z użyciem protokołu OTW-40.
 
-**Logo Ubisense**  
+<img src="ubisense_logo.jpg" width="80%"> 
 
-**Urządzenie Ubisense (Location Cell Manager)**  
+<img src="ubisense_sprzet.jpg" width="80%">  
 
 ### Pozyx
 
 Pozyx to nowoczesny, modułowy system UWB RTLS oparty na metodzie AoA. Ułatwia szybkie wdrożenia w przemyśle, wspiera protokół UDP i umożliwia bezpośrednie połączenie z gatewayem, bez potrzeby centralnego serwera. Anchory Pozyx mogą być zasilane przez PoE i sterowane zdalnie z poziomu interfejsu webowego.
 
-**Logo Pozyx**  
+<img src="pozyx_logo.jpg" width="80%"> 
 
-**Urządzenia Pozyx (anchory)**  
+<img src="pozyx_sprzet.jpg" width="80%"> 
 
 
 
