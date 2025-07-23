@@ -1,3 +1,61 @@
+<!-- START: Pozyx_Test_Block_2025-07-23 -->
+
+### Pozyx – uruchomienie systemu i testy w korytarzu (23.07.2025)
+
+Po konfiguracji gatewaya uzyskano stabilne połączenie z chmurą („Connected to Pozyx Cloud”). Początkowe alerty (Idle, brak rangingu/pozycji) wyeliminowano przez:
+1. Reaktywację anchorów (#5816, #5846, #5870, #5875) – wszystkie online.  
+2. Autocalibrate / Ranging only – każdy anchor ma 3/3 połączenia z pozostałymi.  
+3. Uzupełnienie współrzędnych X, Y, Z.  
+4. Start/Run positioning – status: `positioner running`.  
+5. Aktywację 3 tagów w tym samym setupie.
+
+**Stan końcowy:** `positioner running`, `4/4 anchors functional`, `3 active tags`.
+
+**Scenariusz testów:** anchory pod sufitem w korytarzu; tagi na krzesłach do kalibracji/rangingu, następnie w ruchu. Weryfikacja w Pozyx Cloud (mapa piętra).
+
+<link rel="stylesheet" href="docs/style.css">
+<style>
+.img2x2 td{width:50%;padding:6px;vertical-align:top;text-align:center;}
+.img2x2 img{max-width:100%;border:1px solid #ccc;border-radius:4px;}
+.caption{font-size:.85rem;color:#555;margin-top:.3rem;}
+.video-block{margin:1.2rem 0;text-align:center;}
+.video-block video{max-width:100%;border:1px solid #ccc;border-radius:4px;}
+</style>
+
+<table class="img2x2">
+  <tr>
+    <td>
+      <img src="pozyx_tag_aplication.png" alt="Pozyx Cloud UI – positioner running, 4/4 anchors functional, 3 active tags">
+      <div class="caption">Rys. 1. Widok w Pozyx Cloud – pozycjoner uruchomiony, 4/4 anchory funkcjonalne, 3 aktywne tagi.</div>
+    </td>
+    <td>
+      <img src="pozyx_tag_1.png" alt="Dwa anchory pod sufitem, tag na krześle przy oknie">
+      <div class="caption">Rys. 2. Scena przy oknie: dwa anchory pod sufitem, tag referencyjny na krześle.</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="pozyx_tag_2.png" alt="Korytarz z anchorami pod sufitem i tagami na krzesłach">
+      <div class="caption">Rys. 3. Rozmieszczenie anchorów w korytarzu; tagi do kalibracji i testów zasięgu.</div>
+    </td>
+    <td>
+      <img src="pozyx_tag_3.png" alt="Dwa tagi Pozyx na biurku, jeden z aktywną diodą LED">
+      <div class="caption">Rys. 4. Para tagów Pozyx – kontrola stanu LED i gotowości do pomiarów.</div>
+    </td>
+  </tr>
+</table>
+
+<div class="video-block">
+  <video controls playsinline muted>
+    <source src="PierwszaPróba.mp4" type="video/mp4">
+    Twój przeglądarka nie obsługuje wideo HTML5. Pobierz plik: <a href="PierwszaPróba.mp4">PierwszaPróba.mp4</a>
+  </video>
+  <div class="caption">Film 1. Pierwsza próba przejścia z tagiem w korytarzu.</div>
+</div>
+
+<!-- END: Pozyx_Test_Block_2025-07-23 -->
+
+
 ### Założenia systemu RTLS
 
 System został zaprojektowany jako modularna architektura czasu rzeczywistego do odbioru i integracji danych z różnych technologii lokalizacji. Główne założenia:
@@ -139,31 +197,6 @@ Schemat zakłada:
 
 Architektura jest w pełni modularna, gotowa do wdrożenia w Docker Compose lub Podman Pod. Komunikacja wewnętrzna kontenerów może opierać się o kolejki asynchroniczne (np. asyncio), sockety lub lokalny TCP. API udostępnia dane lokalizacyjne w formacie ujednoliconym `{id, x, y, z, t}`.
 
-
-### Pozyx – uruchomienie systemu i testy w korytarzu (23.07.2025)
-
-Po konfiguracji gatewaya i sieci uzyskano stabilne połączenie z chmurą („Connected to Pozyx Cloud”). Początkowe alerty (Idle, brak rangingu i pozycji) usunięto poprzez:
-
-1. Reaktywację anchorów (#5816, #5846, #5870, #5875) – wszystkie online.  
-2. Autocalibrate / Ranging only – każdy anchor ma 3/3 połączenia z pozostałymi (kompletna macierz dystansów).  
-3. Uzupełnienie współrzędnych X, Y, Z dla anchorów.  
-4. Start/Run positioning – positioner running.  
-5. Aktywacja tagów – 3 aktywne tagi w tym samym setupie.
-
-**Wynik końcowy:** `positioner running`, `4/4 anchors functional`, `3 active tags`.
-
-**Scenariusz testów:**  
-- Anchory zamocowane pod sufitem w korytarzu (różne końce i środek).  
-- Tagi rozmieszczone na krzesłach do kalibracji/rangingu, następnie używane mobilnie.  
-- Weryfikacja działania na panelu Pozyx Cloud (mapa piętra + statusy).
-
-![Pozyx Cloud UI – positioner running, 4/4 anchors functional, 3 active tags](./pozyx_tag_aplication.png)
-
-![Scena przy oknie – dwa anchory pod sufitem, tag referencyjny na krześle](./pozyx_tag_1.png)
-
-![Korytarz z rozmieszczonymi anchorami i tagami na krzesłach do kalibracji](./pozyx_tag_2.png)
-
-![Dwa tagi Pozyx na biurku – kontrola stanu LED i gotowości do pomiarów](./pozyx_tag_3.png)
 
 
 
