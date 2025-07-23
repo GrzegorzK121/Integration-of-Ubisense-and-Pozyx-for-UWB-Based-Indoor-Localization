@@ -53,8 +53,6 @@ Po konfiguracji gatewaya uzyskano stabilne połączenie z chmurą („Connected 
   <div class="caption">Film 1. Pierwsza próba przejścia z tagiem w korytarzu.</div>
 </div>
 
-<!-- END: Pozyx_Test_Block_2025-07-23 -->
-
 
 ### Założenia systemu RTLS
 
