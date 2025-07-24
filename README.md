@@ -17,15 +17,7 @@ Po konfiguracji gatewaya uzyskano stabilne połączenie z chmurą („Connected 
 <div class="caption">Rys. 1. Widok w Pozyx Cloud – pozycjoner uruchomiony, 4/4 anchory funkcjonalne, 3 aktywne tagi.</div>
 
 <table class="img2x2">
-  <tr>
-    <td>
-      
-    </td>
-    <td>
-      <img src="pozyx_tag_1.png" alt="Dwa anchory pod sufitem, tag na krześle przy oknie">
-      <div class="caption">Rys. 2. Scena przy oknie: dwa anchory pod sufitem, tag referencyjny na krześle.</div>
-    </td>
-  </tr>
+  
   <tr>
     <td>
       <img src="pozyx_tag_2.png" alt="Korytarz z anchorami pod sufitem i tagami na krzesłach">
