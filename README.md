@@ -13,20 +13,13 @@ Po konfiguracji gatewaya uzyskano stabilne połączenie z chmurą („Connected 
 
 **Scenariusz testów:** anchory pod sufitem w korytarzu; tagi na krzesłach do kalibracji/rangingu, następnie w ruchu. Weryfikacja w Pozyx Cloud (mapa piętra).
 
-<link rel="stylesheet" href="docs/style.css">
-<style>
-.img2x2 td{width:50%;padding:6px;vertical-align:top;text-align:center;}
-.img2x2 img{max-width:100%;border:1px solid #ccc;border-radius:4px;}
-.caption{font-size:.85rem;color:#555;margin-top:.3rem;}
-.video-block{margin:1.2rem 0;text-align:center;}
-.video-block video{max-width:100%;border:1px solid #ccc;border-radius:4px;}
-</style>
+<img src="pozyx_tag_aplication.png" alt="Pozyx Cloud UI – positioner running, 4/4 anchors functional, 3 active tags">
+<div class="caption">Rys. 1. Widok w Pozyx Cloud – pozycjoner uruchomiony, 4/4 anchory funkcjonalne, 3 aktywne tagi.</div>
 
 <table class="img2x2">
   <tr>
     <td>
-      <img src="pozyx_tag_aplication.png" alt="Pozyx Cloud UI – positioner running, 4/4 anchors functional, 3 active tags">
-      <div class="caption">Rys. 1. Widok w Pozyx Cloud – pozycjoner uruchomiony, 4/4 anchory funkcjonalne, 3 aktywne tagi.</div>
+      
     </td>
     <td>
       <img src="pozyx_tag_1.png" alt="Dwa anchory pod sufitem, tag na krześle przy oknie">
