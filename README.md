@@ -1,35 +1,32 @@
-<!-- START: Pozyx_Test_Block_2025-07-23 -->
+### Pozyx – system launch and corridor tests (23.07.2025)
 
-### Pozyx – uruchomienie systemu i testy w korytarzu (23.07.2025)
-
-Po konfiguracji gatewaya uzyskano stabilne połączenie z chmurą („Connected to Pozyx Cloud”). Początkowe alerty (Idle, brak rangingu/pozycji) wyeliminowano przez:
-1. Reaktywację anchorów (#5816, #5846, #5870, #5875) – wszystkie online.  
-2. Autocalibrate / Ranging only – każdy anchor ma 3/3 połączenia z pozostałymi.  
-3. Uzupełnienie współrzędnych X, Y, Z.  
+After configuring the gateway, a stable connection to the cloud was achieved (“Connected to Pozyx Cloud”). The initial alerts (Idle, no ranging/position) were eliminated by:
+1. Reactivating anchors (#5816, #5846, #5870, #5875) – all online.  
+2. Autocalibrate / Ranging only – each anchor has 3/3 connections with the others.  
+3. Completing the X, Y, Z coordinates.  
 4. Start/Run positioning – status: `positioner running`.  
-5. Aktywację 3 tagów w tym samym setupie.
+5. Activating 3 tags in the same setup.
 
-**Stan końcowy:** `positioner running`, `4/4 anchors functional`, `3 active tags`.
+**Final state:** `positioner running`, `4/4 anchors functional`, `3 active tags`.
 
-**Scenariusz testów:** anchory pod sufitem w korytarzu; tagi na krzesłach do kalibracji/rangingu, następnie w ruchu. Weryfikacja w Pozyx Cloud (mapa piętra).
+**Test scenario:** anchors mounted on the corridor ceiling; tags placed on chairs for calibration/ranging, then moved around. Verification performed in Pozyx Cloud (floor map).
 
 <img src="pozyx_tag_aplication.png" alt="Pozyx Cloud UI – positioner running, 4/4 anchors functional, 3 active tags">
-<div class="caption">Rys. 1. Widok w Pozyx Cloud – pozycjoner uruchomiony, 4/4 anchory funkcjonalne, 3 aktywne tagi.</div>
-
+<div class="caption">Fig. 1. View in Pozyx Cloud – positioner running, 4/4 anchors functional, 3 active tags.</div>
 <table>
   <tr>
-    <img src="pozyx_tag_1.png" alt="Korytarz z anchorami pod sufitem i tagami na krzesłach">
-    <div class="caption">Rys. 3. Rozmieszczenie anchorów w korytarzu; tagi do kalibracji i testów zasięgu.</div>
+    <img src="pozyx_tag_1.png" alt="Corridor with ceiling‑mounted anchors and tags on chairs">
+    <div class="caption">Fig. 3. Anchor layout in the corridor; tags used for calibration and range testing.</div>
     <table class="img2x2">
   </tr>
-    <tr>
+  <tr>
     <td>
-      <img src="pozyx_tag_2.png" alt="Korytarz z anchorami pod sufitem i tagami na krzesłach">
-      <div class="caption">Rys. 3. Rozmieszczenie anchorów w korytarzu; tagi do kalibracji i testów zasięgu.</div>
+      <img src="pozyx_tag_2.png" alt="Corridor with ceiling‑mounted anchors and tags on chairs">
+      <div class="caption">Fig. 3. Anchor layout in the corridor; tags used for calibration and range testing.</div>
     </td>
     <td>
-      <img src="pozyx_tag_3.png" alt="Dwa tagi Pozyx na biurku, jeden z aktywną diodą LED">
-      <div class="caption">Rys. 4. Para tagów Pozyx – kontrola stanu LED i gotowości do pomiarów.</div>
+      <img src="pozyx_tag_3.png" alt="Two Pozyx tags on a desk, one with an active LED">
+      <div class="caption">Fig. 4. Pair of Pozyx tags – checking LED status and readiness for measurements.</div>
     </td>
   </tr>
 </table>
@@ -37,156 +34,146 @@ Po konfiguracji gatewaya uzyskano stabilne połączenie z chmurą („Connected 
 <div class="video-block">
   <video controls playsinline muted>
     <source src="PierwszaPróba.mp4" type="video/mp4">
-    Twój przeglądarka nie obsługuje wideo HTML5. Pobierz plik: <a href="PierwszaPróba.mp4">PierwszaPróba.mp4</a>
+    Your browser does not support HTML5 video. Download the file: <a href="PierwszaPróba.mp4">PierwszaPróba.mp4</a>
   </video>
-  <div class="caption">Film 1. Pierwsza próba przejścia z tagiem w korytarzu.</div>
+  <div class="caption">Video 1. First corridor walk‑through with a tag.</div>
 </div>
 
 
-### Założenia systemu RTLS
+### RTLS System Assumptions
 
-System został zaprojektowany jako modularna architektura czasu rzeczywistego do odbioru i integracji danych z różnych technologii lokalizacji. Główne założenia:
+The system is designed as a modular real‑time architecture for receiving and integrating data from various positioning technologies. Key assumptions:
 
-- Obsługa wielu źródeł danych lokalizacyjnych przez UDP (Pozyx, Ubisense)
-- Przetwarzanie danych na serwerze (VM lub kontenery)
-- Ujednolicenie formatu wiadomości do modelu `{id, x, y, z, t}`
-- Dostęp do danych przez REST API oraz WebSocket
-- Zewnętrzny frontend (klient HTTP), niezależny od backendu
-- Możliwość integracji z systemami MES / ERP / BI
+- Support for multiple location data sources over UDP (Pozyx, Ubisense)  
+- Data processing on a server (VM or containers)  
+- Unified message format to the model `{id, x, y, z, t}`  
+- Data access via REST API and WebSocket  
+- External frontend (HTTP client) independent of the backend  
+- Possibility of integration with MES / ERP / BI systems  
 
-Technologia UWB i systemy RTLS
+---
 
-### Czym jest UWB?
+## UWB Technology and RTLS Systems
 
-**Ultra-Wideband (UWB)** to technologia bezprzewodowa umożliwiająca bardzo precyzyjne pomiary odległości oraz pozycjonowanie w czasie rzeczywistym (RTLS). Działa w paśmie od 3,1 do 10,6 GHz i pozwala na dokładność rzędu kilku centymetrów. Dzięki bardzo krótkim impulsom UWB nie koliduje z typowymi sieciami Wi-Fi i Bluetooth i jest odporna na wielodrogowość (multipath).
+### What is UWB?
 
-### Podejścia lokalizacyjne: TDoA i AoA
+**Ultra‑Wideband (UWB)** is a wireless technology that enables very precise distance measurements and real‑time location tracking (RTLS). Operating in the 3.1–10.6 GHz band, it delivers accuracies on the order of a few centimetres. Thanks to its very short pulses, UWB does not interfere with typical Wi‑Fi or Bluetooth networks and is resistant to multipath effects.
+
+### Positioning Approaches: TDoA and AoA
 
 **TDoA (Time Difference of Arrival)**  
-Pozycja obliczana jest na podstawie różnicy czasów przylotu sygnałów do anchorów. Wymaga precyzyjnej synchronizacji czasu między urządzeniami, co realizowane jest zwykle przez sieć Ethernet i protokoły takie jak PTP. Metoda ta dobrze sprawdza się w otwartych przestrzeniach z dużą liczbą anchorów.
+The position is calculated from the time‑of‑arrival differences of signals reaching the anchors. It requires precise time synchronisation between devices, typically achieved via Ethernet and protocols like PTP. This method performs well in open areas with a large number of anchors.
 
 **AoA (Angle of Arrival)**  
-Pozycja określana jest przez pomiar kąta, pod jakim sygnał dotarł do anteny odbiorczej. Systemy AoA nie wymagają synchronizacji czasowej między urządzeniami, ale opierają się na antenach kierunkowych i zaawansowanych algorytmach przetwarzania sygnału. Technologia ta sprawdza się w elastycznych, przemysłowych instalacjach.
+The position is determined by measuring the angle at which the signal reaches the receiving antenna. AoA systems do not need time synchronisation between devices but rely on directional antennas and advanced signal‑processing algorithms. This approach performs well in flexible, industrial installations.
 
 
-## Systemy Ubisense i Pozyx
+## Ubisense and Pozyx Systems
 
 ### Ubisense
 
-Ubisense to dojrzały, przemysłowy system lokalizacji oparty na UWB i TDoA. Umożliwia precyzyjne śledzenie obiektów w czasie rzeczywistym w środowiskach przemysłowych i magazynowych. Komunikacja z systemem odbywa się poprzez multicast UDP z użyciem protokołu OTW-40.
+Ubisense is a mature, industrial UWB‑based positioning system that uses TDoA. It enables precise real‑time tracking of objects in industrial and warehouse environments. Communication with the system takes place via multicast UDP using the OTW‑40 protocol.
 
-<img src="Ubisense_logo.png" width="30%"> 
+<img src="Ubisense_logo.png" width="30%">
 
-<img src="ubisense_sprzet.png" width="80%">  
+<img src="ubisense_sprzet.png" width="80%">
 
 ### Pozyx
 
-Pozyx to nowoczesny, modułowy system UWB RTLS oparty na metodzie AoA. Ułatwia szybkie wdrożenia w przemyśle, wspiera protokół UDP i umożliwia bezpośrednie połączenie z gatewayem, bez potrzeby centralnego serwera. Anchory Pozyx mogą być zasilane przez PoE i sterowane zdalnie z poziomu interfejsu webowego.
+Pozyx is a modern, modular UWB RTLS that relies on the AoA method. It simplifies rapid industrial deployments, supports the UDP protocol, and can connect directly through a gateway without requiring a central server. Pozyx anchors can be powered via PoE and managed remotely through the web interface.
 
-<img src="pozyx_logo.png" width="80%"> 
+<img src="pozyx_logo.png" width="80%">
 
-<img src="pozyx_sprzet.jpg" width="80%"> 
+<img src="pozyx_sprzet.jpg" width="80%">
 
 
 
-### Sprzęt – zamontowane urządzenia
+### Hardware – installed devices
 
-Poniżej zdjęcia z wdrożenia fizycznego systemu:
+Below are photos from the physical deployment of the system:
 
-#### Ubisense: kontrolery z trzema portami Ethernet do synchronizacji
+#### Ubisense: controllers with three Ethernet ports for synchronization
 
-Każdy z kontrolerów Ubisense posiada:
-- dedykowane porty dla synchronizacji między anchorami (czas i pozycja),
-- osobne porty Ethernet do zarządzania i zasilania (PoE).
-- 
+Each Ubisense controller provides:
+- dedicated ports for synchronization between anchors (time and position),
+- separate Ethernet ports for management and power (PoE).
 
 <img src="ubisense_1.jpg" width="80%">
 
- 
 <img src="ubisense_2.jpg" width="80%">
 
-#### Pozyx: anchor z magistralą Ethernet (zasilanie + komunikacja)
+#### Pozyx: anchor with an Ethernet bus (power + communication)
 
-System Pozyx korzysta z uproszczonej architektury:
-- każdy anchor posiada port Ethernet z obsługą PoE,
-- synchronizacja czasowa odbywa się przez sieć (PTP),
-- dane UDP są przesyłane bezpośrednio z gatewaya Pozyx.
-
+The Pozyx system uses a simplified architecture:
+- each anchor has an Ethernet port with PoE support,
+- time synchronization is handled over the network (PTP),
+- UDP data are transmitted directly from the Pozyx gateway.
 
 <img src="pozyx_anchors.jpg" width="80%">
 
 
-## Topologia sieci RTLS (Ubisense + Pozyx)
 
-W tym wariancie backend RTLS działa wewnątrz pojedynczej maszyny wirtualnej. Do niej przesyłane są wiadomości UDP z zewnętrznych systemów lokalizacji (Pozyx oraz Ubisense). Każdy z protokołów ma osobny odbiornik, który parsuje wiadomości i przekazuje je do wspólnego przetwarzania. Wynik udostępniany jest poprzez interfejs API (REST lub WebSocket), a wizualizacja odbywa się po stronie klienta.
+## RTLS Network Topology (Ubisense + Pozyx)
 
-![Topologia RTLS](./topologia3.png)
+In this variant, the RTLS backend runs inside a single virtual machine. UDP messages from the external positioning systems (Pozyx and Ubisense) are sent to it. Each protocol has its own receiver that parses the messages and passes them on for unified processing. The results are exposed via an API (REST or WebSocket), and visualization is handled on the client side.
 
+![RTLS topology](./topologia3.png)
 
+### Key components:
+- `Pozyx Gateway` and `Ubisense App` – send location data as UDP messages  
+- `UDP Receiver (Pozyx)` – parses Pozyx‑specific UDP messages  
+- `UDP Receiver (Ubisense)` – parses OTW‑40 messages  
+- `Data → common format` – data‑normalization layer `{id, x, y, z, t}`  
+- `REST / WebSocket API` – provides real‑time data  
+- `Client application (map)` – frontend runs outside the VM and visualizes the location  
 
-### Kluczowe elementy:
-- `Pozyx Gateway` i `Ubisense App` – wysyłają dane lokalizacyjne jako wiadomości UDP
-- `UDP Receiver (Pozyx)` – parser wiadomości UDP specyficznych dla Pozyx
-- `UDP Receiver (Ubisense)` – parser wiadomości w formacie OTW-40
-- `Dane → format wspólny` – warstwa normalizacji danych `{id, x, y, z, t}`
-- `REST / WebSocket API` – udostępnia dane w czasie rzeczywistym
-- `Aplikacja kliencka (mapa)` – frontend działa poza wirtualką i wizualizuje lokalizację
+The system can run on any hypervisor (e.g., VirtualBox, Proxmox, KVM), and UDP communication takes place within the local subnet.
 
-System może być uruchomiony na dowolnym hypervisorze (np. VirtualBox, Proxmox, KVM), a komunikacja UDP odbywa się w obrębie lokalnej podsieci.
+The Pozyx controller is directly connected to four Pozyx anchors, which are powered and communicate over Ethernet.
 
+### Connection list
 
-Kontroler Pozyx jest bezpośrednio połączony z czterema anchorami Pozyx, które są zasilane i komunikują się przez Ethernet.
-
-### Lista połączeń
-
-Router → Switch PoE #1  
-Switch PoE #1 → RTLS Pozyx Controller  
-Switch PoE #1 → Anchor Ubisense (x2)  
-Switch PoE #1 → Switch PoE #2  
-Switch PoE #2 → RTLS Ubisense Controller  
-Switch PoE #2 → Anchor Ubisense (x2)  
-RTLS Pozyx Controller → Anchor Pozyx (x4)
+Router → PoE Switch #1  
+PoE Switch #1 → RTLS Pozyx Controller  
+PoE Switch #1 → Ubisense Anchor (x2)  
+PoE Switch #1 → PoE Switch #2  
+PoE Switch #2 → RTLS Ubisense Controller  
+PoE Switch #2 → Ubisense Anchor (x2)  
+RTLS Pozyx Controller → Pozyx Anchor (x4)
 
 
 
-## Możliwe rozwiązania aplikacji
+## Possible application solutions
 
-Dane z systemów RTLS (Ubisense oraz Pozyx) mogą być odbierane i przetwarzane przez wspólną aplikację zbierającą. Głównym celem jest unifikacja danych lokalizacyjnych przesyłanych przez UDP i udostępnienie ich w czasie rzeczywistym do dalszych modułów (np. API, wizualizacja, system MES).
+RTLS data (from Ubisense and Pozyx) can be received and processed by a common collection application. The main goal is to unify the positioning data sent over UDP and make them available in real time to downstream modules (e.g., API, visualization, MES).
 
-Poniżej przedstawiono dwa niezależne sposoby realizacji aplikacji – w oparciu o wirtualne maszyny oraz o kontenery z interpreterem Pythona.
+Below are two independent approaches to implementing the application – one based on virtual machines and the other on containers with a Python interpreter.
 
-### Rozwiązanie 1: UDP na wirtualnych maszynach
+### Solution 1: UDP on virtual machines
 
-Każdy komponent aplikacji działa na oddzielnej maszynie wirtualnej (np. VirtualBox, Proxmox, KVM). Maszyny są połączone wewnętrzną siecią bridge, a połączenia UDP realizowane są między adresami prywatnymi.
+Each component runs on a separate virtual machine (e.g., VirtualBox, Proxmox, KVM). The machines are connected via an internal bridge network, and UDP packets are exchanged between private addresses.
 
-![Topologia RTLS](./topologiaWirtualki.png)
+![RTLS topology](./topologiaWirtualki.png)
 
-### Kluczowe elementy:
-- `Pozyx Gateway` i `Ubisense App` – wysyłają dane lokalizacyjne jako wiadomości UDP
-- `UDP Receiver (Pozyx)` – parser wiadomości UDP specyficznych dla Pozyx
-- `UDP Receiver (Ubisense)` – parser wiadomości w formacie OTW-40
-- `Dane → format wspólny` – warstwa normalizacji danych `{id, x, y, z, t}`
-- `REST / WebSocket API` – udostępnia dane w czasie rzeczywistym
-- `Aplikacja kliencka (mapa)` – frontend działa poza wirtualką i wizualizuje lokalizację
+### Key components:
+- `Pozyx Gateway` and `Ubisense App` – send location data as UDP messages  
+- `UDP Receiver (Pozyx)` – parses Pozyx‑specific UDP messages  
+- `UDP Receiver (Ubisense)` – parses OTW‑40 messages  
+- `Data → common format` – data‑normalization layer `{id, x, y, z, t}`  
+- `REST / WebSocket API` – provides real‑time data  
+- `Client application (map)` – frontend runs outside the VM and visualizes the location  
 
-System może być uruchomiony na dowolnym hypervisorze (np. VirtualBox, Proxmox, KVM), a komunikacja UDP odbywa się w obrębie lokalnej podsieci.
+The system can run on any hypervisor (e.g., VirtualBox, Proxmox, KVM), and UDP communication takes place within the local subnet.
 
-### Rozwiązanie 2: Przetwarzanie UDP w kontenerach z frontendem poza serwerem
+### Solution 2: UDP processing in containers with the frontend outside the server
 
-Poniższy diagram przedstawia sposób odbioru danych lokalizacyjnych z sieci UDP w kontenerach Docker/Podman oraz ich ekspozycję do zewnętrznych aplikacji. Frontend działa poza hostem kontenerowym i łączy się z API udostępnianym przez backend.
+The diagram below shows how location data are received from the UDP network in Docker/Podman containers and exposed to external applications. The frontend runs outside the container host and connects to the API provided by the backend.
 
-Schemat zakłada:
-- dwa źródła danych UDP (wcześniej opisane),
-- kontenery: ingest, normalizer, API,
-- frontend działający niezależnie (np. przeglądarka, MES, dashboard).
+The setup assumes:
+- two UDP data sources (described earlier),
+- containers: *ingest*, *normalizer*, *API*,
+- a frontend that runs independently (e.g., browser, MES, dashboard).
 
-![Topologia RTLS](./topologiaKontener.png)
+![RTLS topology](./topologiaKontener.png)
 
-Architektura jest w pełni modularna, gotowa do wdrożenia w Docker Compose lub Podman Pod. Komunikacja wewnętrzna kontenerów może opierać się o kolejki asynchroniczne (np. asyncio), sockety lub lokalny TCP. API udostępnia dane lokalizacyjne w formacie ujednoliconym `{id, x, y, z, t}`.
-
-
-
-
-
-
-
+The architecture is fully modular and ready for deployment with Docker Compose or Podman Pod. Internal container communication can be based on asynchronous queues (e.g., `asyncio`), sockets, or local TCP. The API exposes location data in the unified format `{id, x, y, z, t}`.
